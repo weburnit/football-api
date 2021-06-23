@@ -73,9 +73,9 @@ class TeamsApi
         Configuration $config,
         HeaderSelector $selector
     ) {
-        $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
+        $this->client = $client;
+        $this->config = $config;
+        $this->headerSelector = $selector;
     }
 
     /**
