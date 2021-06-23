@@ -35,9 +35,6 @@ Then run `composer install`
 
 Download the files and include `autoload.php`:
 
-```php
-    require_once('/path/to/SwaggerClient-php/vendor/autoload.php');
-```
 
 ## Tests
 
@@ -55,18 +52,13 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
+use GuzzleHttp\Psr7\Response;
 
-$apiInstance = new Swagger\Client\Api\CountriesSeasonsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-
-try {
-    $apiInstance->v3Seasons();
-} catch (Exception $e) {
-    echo 'Exception when calling CountriesSeasonsApi->v3Seasons: ', $e->getMessage(), PHP_EOL;
-}
+$builder = new ClientBuilder('xxx');
+$leagueAPI = new LeaguesApi($builder->getClient(), $builder->getConfiguration(), $builder->getSelector());
+$res = $leagueAPI->v3LeaguesByLeagueIdAsync()->then(function (Response  $rp) {
+    var_dump($rp->getBody()->getContents());
+}, null)->wait();
 ?>
 ```
 

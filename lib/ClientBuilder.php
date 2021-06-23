@@ -24,12 +24,18 @@ class ClientBuilder
     private string $key;
 
     /**
+     * @var int
+     */
+    private int $timeout;
+
+    /**
      * ClientBuilder constructor.
      * @param $key
      */
-    public function __construct($key)
+    public function __construct(string $key, int $timeout = 5)
     {
         $this->key = $key;
+        $this->timeout = $timeout;
     }
 
     /**
@@ -39,7 +45,7 @@ class ClientBuilder
     {
         return new Client([
             'base_uri' => $this->apiHost,
-            'timeout'  => 2000
+            'timeout'  => $this->timeout,
         ]);
     }
 
