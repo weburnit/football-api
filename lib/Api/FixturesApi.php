@@ -495,14 +495,9 @@ class FixturesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v3FixturesInProgressLiveScoreAsync($league = null, $status = null, $team = null, $id = null, $round = null, $live = 'all', $last = null, $from = null, $season = null, $next = null, $to = null, $date = null, $timezone = null)
+    public function v3FixturesInProgressLiveScoreAsync($league = null, $status = null, $team = null, $id = null, $round = null, $live = null, $last = null, $from = null, $season = null, $next = null, $to = null, $date = null, $timezone = null)
     {
-        return $this->v3FixturesInProgressLiveScoreAsyncWithHttpInfo($league, $status, $team, $id, $round, $live, $last, $from, $season, $next, $to, $date, $timezone)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
+        return $this->v3FixturesInProgressLiveScoreAsyncWithHttpInfo($league, $status, $team, $id, $round, $live, $last, $from, $season, $next, $to, $date, $timezone);
     }
 
     /**
@@ -529,14 +524,13 @@ class FixturesApi
      */
     public function v3FixturesInProgressLiveScoreAsyncWithHttpInfo($league = null, $status = null, $team = null, $id = null, $round = null, $live = 'all', $last = null, $from = null, $season = null, $next = null, $to = null, $date = null, $timezone = null)
     {
-        $returnType = '';
         $request = $this->v3FixturesInProgressLiveScoreRequest($league, $status, $team, $id, $round, $live, $last, $from, $season, $next, $to, $date, $timezone);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                function ($response) {
+                    return $response;
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -786,12 +780,7 @@ class FixturesApi
      */
     public function v3FixturesRoundsAsync($league, $season, $current = null)
     {
-        return $this->v3FixturesRoundsAsyncWithHttpInfo($league, $season, $current)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
+        return $this->v3FixturesRoundsAsyncWithHttpInfo($league, $season, $current);
     }
 
     /**
