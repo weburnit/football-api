@@ -23,8 +23,11 @@ class FixtureItem
             $this->league = new League($data['league']);
         }
         if (isset($data['teams'])) {
-            foreach ($data['teams'] as $team) {
-                array_push($this->teams, new Club($team));
+            foreach ($data['teams'] as $key => $team) {
+                if (!is_array($team)) {
+                    continue;
+                }
+                $this->teams[$key] = new Club($team);
             }
         }
     }
