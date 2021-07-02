@@ -27,6 +27,6 @@ class Status
     public function __construct(array $data)
     {
         $this->long = $data['long'];
-        $this->elapsed = $data['elapsed'] ?: 0;
+        $this->elapsed = !is_null($data['elapsed']) ? $data['elapsed']: 0;
     }
 }
