@@ -19,7 +19,7 @@ class Status
      */
     public string $long;
     public string $short;
-    public string $elapsed;
+    public int $elapsed;
 
     /**
      * Status constructor.
@@ -27,6 +27,6 @@ class Status
     public function __construct(array $data)
     {
         $this->long = $data['long'];
-        $this->elapsed = $data['elapsed'];
+        $this->elapsed = $data['elapsed'] ?: 0;
     }
 }
