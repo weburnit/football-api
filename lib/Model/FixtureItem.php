@@ -36,5 +36,13 @@ class FixtureItem
                 $this->teams[$key] = new Club($team, $score);
             }
         }
+
+        if (array_key_exists('events', $data) && is_array($data['events'])) {
+            $events = [];
+            foreach ($data['events'] as $event) {
+                array_push($events, new Event($event));
+            }
+            $this->events = $events;
+        }
     }
 }
