@@ -9,6 +9,7 @@ class FixtureItem
     public Fixture $fixture;
     public League $league;
     public array $teams;
+    public array $events;
 
     /**
      * FixtureItem constructor.
@@ -16,6 +17,7 @@ class FixtureItem
     public function __construct(array $data)
     {
         $this->teams = [];
+        $this->events = [];
         if (isset($data['fixture'])) {
             $this->fixture = new Fixture($data['fixture']);
         }
@@ -27,7 +29,11 @@ class FixtureItem
                 if (!is_array($team)) {
                     continue;
                 }
-                $this->teams[$key] = new Club($team);
+                $score = 0;
+                if (array_key_exists('goals', $data) && array_key_exists($key, $data['goals'])) {
+                    $score = $data['goals'][$key];
+                }
+                $this->teams[$key] = new Club($team, $score);
             }
         }
     }

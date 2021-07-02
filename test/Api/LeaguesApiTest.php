@@ -27,6 +27,7 @@
 
 namespace FootballApi\Client;
 
+use FootballApi\Client\Api\FixturesApi;
 use FootballApi\Client\Api\LeaguesApi;
 use GuzzleHttp\Psr7\Response;
 
@@ -77,11 +78,16 @@ class LeaguesApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testV3LeaguesByLeagueId()
     {
-        $builder = new ClientBuilder('xxx');
-        $leagueAPI = new LeaguesApi($builder->getClient(), $builder->getConfiguration(), $builder->getSelector());
-        $res = $leagueAPI->v3LeaguesByLeagueIdAsync()->then(function (Response $rp) {
-            var_dump($rp->getBody()->getContents());
-        }, null)->wait();
+        $builder = new ClientBuilder('7df9a7303bmsh4401bf50555784cp170057jsn7c6a52b9a7b4');
+//        $leagueAPI = new LeaguesApi($builder->getClient(), $builder->getConfiguration(), $builder->getSelector());
+//        $res = $leagueAPI->v3LeaguesByLeagueIdAsync()->then(function (Response $rp) {
+//            var_dump($rp->getBody()->getContents());
+//        }, null)->wait();
 
+        $fixture = new FixturesApi($builder->getClient(), $builder->getConfiguration(), $builder->getSelector());
+        $res = $fixture->v3FixturesInProgressLiveScoreAsync(date: date('Y-m-d'), timezone: 'UTC')
+            ->then(function (Response $response){
+                echo($response->getBody()->getContents());
+            }, null);
     }
 }
