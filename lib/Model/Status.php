@@ -8,6 +8,7 @@ class Status
 {
     const POSTPONE = "Match Postponed";
     const FIRST_HALF = "First Half";
+    const HALFTIME = "Halftime";
     const CANCELLED = "Match Cancelled";
     const NOT_STARTED = "Not Started";
     const SECOND_HALF = "Second Half";
