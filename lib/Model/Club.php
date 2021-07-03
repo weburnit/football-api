@@ -15,13 +15,16 @@ class Club
     /**
      * Club constructor.
      * @param array $data
+     * @param $score
      */
-    public function __construct(array $data, int $score)
+    public function __construct(array $data, $score)
     {
         $this->id = $data['id'];
         $this->name = $data['name'];
         $this->logo = $data['logo'];
         $this->winner = $data['winner'] ?: false;
-        $this->score = $score;
+        if (is_int($score)) {
+            $this->score = $score;
+        }
     }
 }
