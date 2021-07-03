@@ -19,6 +19,7 @@ class Club
      */
     public function __construct(array $data, $score)
     {
+        $this->score = 0;
         $this->id = $data['id'];
         $this->name = $data['name'];
         $this->logo = $data['logo'];

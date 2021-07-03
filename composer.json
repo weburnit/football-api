@@ -1,7 +1,7 @@
 {
     "name": "weburnit/football-api",
     "description": "Football api from RapidAPI",
-    "version": "0.0.11",
+    "version": "0.0.12",
     "keywords": [
         "swagger",
         "php",
